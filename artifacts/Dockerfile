@@ -68,7 +68,7 @@ ENV auth_adapter_jar_url=${release_maven_path}/kernel/kernel-auth-adapter/${vers
 #ENV auth_adapter_jar_url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/mosip/kernel/kernel-auth-adapter/1.1.5-SNAPSHOT/kernel-auth-adapter-1.1.5-20210402.053751-26.jar
 
 # environment variable for msg91_jar url.
-ENV sms_msg91_url=${release_maven_path}/kernel/kernel-smsserviceprovider-msg91/${version}/kernel-smsserviceprovider-msg91-${version}.jar
+#ENV sms_msg91_url=${release_maven_path}/kernel/kernel-smsserviceprovider-msg91/${version}/kernel-smsserviceprovider-msg91-${version}.jar
 #ENV sms_msg91_url=https://oss.sonatype.org/service/local/repositories/snapshots/content/io/mosip/kernel/kernel-smsserviceprovider-msg91/1.1.5-SNAPSHOT/kernel-smsserviceprovider-msg91-1.1.5-20210405.112345-1.jar
 
 # environment variable for ref-idobjectvalidator_jar url
@@ -102,10 +102,11 @@ COPY /src/auth/* ${regproc_jar_path}/
 
 COPY /src/icu4j/* ${icu4j_jar_path}/
 
+COPY /src/kernel/kernel-smsserviceprovider-mtn.jar ${kernel_jar_path}/
 # Download required respective all the jars
 
 RUN wget ${auth_adapter_jar_url} -O ${kernel_jar_path}/kernel-auth-adapter.jar  &&\
-wget ${sms_msg91_url} -O ${kernel_jar_path}/kernel-smsserviceprovider-msg91.jar  &&\
+#wget ${sms_msg91_url} -O ${kernel_jar_path}/kernel-smsserviceprovider-msg91.jar  &&\
  wget ${ref_idobjectvalidator_jar_url} -O ${idobject_jar_path}/kernel-ref-idobjectvalidator.jar &&\
  wget ${cache_url} -O ${cache_path}/cache-provider.jar &&\
  wget ${sdk_jar_url} -O ${sdk_path}/mock-sdk.jar
